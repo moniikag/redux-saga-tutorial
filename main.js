@@ -24,6 +24,7 @@ function render() {
     <Counter
       value={store.getState()}
       onIncrement={() => action('INCREMENT')}
+      onIncrementAsync={() => action('INCREMENT_ASYNC')}
       onDecrement={() => action('DECREMENT')} />,
     document.getElementById('root')
   )
