@@ -10,13 +10,19 @@ export function* incrementAsync() {
   yield put({ type: 'INCREMENT' })
 }
 
-export function* watchIncrementAsync() {
+export function* decrementAsync() {
+  yield call(delay, 1000)
+  yield put({ type: 'DECREMENT', payload: { val: 2 } })
+}
+
+export function* watchAsync() {
   yield takeEvery('INCREMENT_ASYNC', incrementAsync)
+  yield takeEvery('DECREMENT_ASYNC', decrementAsync)
 }
 
 export default function* rootSaga() {
   yield [
     helloSaga(),
-    watchIncrementAsync()
+    watchAsync()
   ]
 }
